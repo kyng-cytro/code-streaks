@@ -9,6 +9,12 @@ export default defineNuxtConfig({
       charset: "UTF-8",
       viewport: "width=device-width, initial-scale=1",
       title: "Code Streaks",
+      meta: [
+        {
+          name: "description",
+          content: "Stay on your toes with our daily coding quiz.",
+        },
+      ],
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
   },

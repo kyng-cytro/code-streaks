@@ -6,6 +6,7 @@
     <div class="flex flex-col gap-5">
       <SideBarLink
         class="flex items-center space-x-2 py-3 px-3 transition-all duration-100 ease-in-out"
+        @click="$emit('toggle-nav')"
         to="/"
       >
         <PlayIcon class="h-5 w-5" />
@@ -13,21 +14,24 @@
       </SideBarLink>
       <SideBarLink
         class="flex items-center space-x-2 py-3 px-3 transition-all duration-100 ease-in-out"
-        to="/about"
+        @click="$emit('toggle-nav')"
+        to="/past"
       >
         <CalendarIcon class="h-5 w-5" />
         <p class="pt-[2.3px] text-sm">Past Challenges</p>
       </SideBarLink>
       <SideBarLink
         class="flex items-center space-x-2 py-3 px-3 transition-all duration-100 ease-in-out"
-        to="/test"
+        @click="$emit('toggle-nav')"
+        to="/how-to"
       >
         <QuestionMarkCircleIcon class="h-5 w-5" />
         <p class="pt-[2.3px] text-sm">How to play?</p>
       </SideBarLink>
       <SideBarLink
         class="flex items-center space-x-2 py-3 px-3 transition-all duration-100 ease-in-out"
-        to="/bla"
+        @click="$emit('toggle-nav')"
+        to="/buy-coffee"
       >
         <CurrencyDollarIcon class="h-5 w-5" />
         <p class="pt-[2.3px] text-sm">Coffee</p>
