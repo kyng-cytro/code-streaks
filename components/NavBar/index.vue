@@ -1,6 +1,6 @@
 <template>
-  <div
-    class="flex items-center justify-between bg-white py-3 shadow-md dark:bg-slate-700"
+  <nav
+    class="flex items-center justify-between bg-white py-5 shadow-md dark:bg-slate-700"
   >
     <div class="flex space-x-2 px-3 md:block md:px-6">
       <Transition name="menu" mode="out-in">
@@ -33,7 +33,7 @@
         />
       </Transition>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <div>Bla</div>
+  <div class="flex justify-center">Test</div>
 </template>
 
 <script setup lang="ts"></script>
