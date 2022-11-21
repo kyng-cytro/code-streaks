@@ -3,18 +3,10 @@
     class="flex items-center justify-between bg-white py-5 shadow-md dark:bg-slate-700"
   >
     <div class="flex space-x-2 px-3 md:block md:px-6">
-      <Transition name="menu" mode="out-in">
-        <Bars3Icon
-          @click="$emit('toggle-nav')"
-          class="h-6. w-6 cursor-pointer md:hidden"
-          v-if="!nav"
-        />
-        <XMarkIcon
-          @click="$emit('toggle-nav')"
-          class="h-6. w-6 cursor-pointer md:hidden"
-          v-else
-        />
-      </Transition>
+      <Bars3Icon
+        @click="$emit('toggle-nav')"
+        class="h-6. w-6 cursor-pointer md:hidden"
+      />
       <h1 class="pt-[3.2px] text-xl">Code Streaks</h1>
     </div>
     <div class="px-3 md:px-6">
@@ -37,12 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  Bars3Icon,
-  XMarkIcon,
-  MoonIcon,
-  SunIcon,
-} from "@heroicons/vue/24/outline";
+import { Bars3Icon, MoonIcon, SunIcon } from "@heroicons/vue/24/outline";
 
 const { dark, nav } = defineProps({
   dark: {
