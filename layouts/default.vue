@@ -9,9 +9,13 @@
       :dark="isDark"
       :nav="navOpen"
     />
-    <div class="mt-8 grid grid-cols-6 px-3 md:px-8">
-      <SideBar class="col-span-2" />
-      <slot class="col-span-4" />
+    <div
+      class="mt-8 grid grid-cols-1 px-3 md:grid-cols-7 md:px-8 lg:grid-cols-5"
+    >
+      <SideBar class="hidden md:col-span-2 md:block lg:col-span-1" />
+      <div class="md:col-span-5 lg:col-span-4">
+        <slot />
+      </div>
     </div>
   </div>
 </template>
