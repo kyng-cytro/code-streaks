@@ -1,5 +1,3 @@
 <template>
-  <div class="flex justify-center">Test</div>
+  <div class="flex justify-center">Index</div>
 </template>
-
-<script setup lang="ts"></script>

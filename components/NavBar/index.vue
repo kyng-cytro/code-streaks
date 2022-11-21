@@ -7,18 +7,24 @@
         @click="$emit('toggle-nav')"
         class="h-6. w-6 cursor-pointer md:hidden"
       />
-      <h1 class="pt-[3.2px] text-xl">Code Streaks</h1>
+      <NuxtLink to="/" class="pt-[3.2px] text-xl">Code Streaks</NuxtLink>
     </div>
     <div class="px-3 md:px-6">
       <Transition name="menu" mode="out-in">
-        <SunIcon
-          key="su"
+        <ComputerDesktopIcon
           class="h-6 w-6 cursor-pointer"
-          v-if="dark"
+          @click="toggleSystem"
+          key="ci"
+          v-if="isSystem"
+        />
+        <SunIcon
+          key="si"
+          class="h-6 w-6 cursor-pointer"
+          v-else-if="dark"
           @click="$emit('toggle-dark')"
         />
         <MoonIcon
-          key="mn"
+          key="mi"
           class="h-6 w-6 cursor-pointer"
           @click="$emit('toggle-dark')"
           v-else
@@ -29,7 +35,21 @@
 </template>
 
 <script setup lang="ts">
-import { Bars3Icon, MoonIcon, SunIcon } from "@heroicons/vue/24/outline";
+import {
+  Bars3Icon,
+  MoonIcon,
+  SunIcon,
+  ComputerDesktopIcon,
+} from "@heroicons/vue/24/outline";
+
+let isSystem = ref(true);
+
+const emit = defineEmits(["toggle-dark", "toggle-nav"]);
+
+const toggleSystem = () => {
+  isSystem.value = false;
+  emit("toggle-dark");
+};
 
 const { dark, nav } = defineProps({
   dark: {
