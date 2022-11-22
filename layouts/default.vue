@@ -35,7 +35,7 @@
       <!-- Content -->
       <div class="md:col-span-5 lg:col-span-4">
         <slot />
-        <Footer class="mt-32 px-3" />
+        <Footer class="mb-5 mt-32 px-3" />
       </div>
     </div>
   </div>
