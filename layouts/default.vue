@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-screen bg-slate-100 font-mono dark:bg-slate-600 dark:text-slate-100"
+    class="select-none bg-slate-100 font-mono dark:bg-slate-600 dark:text-slate-100"
     :class="{ dark: isDark }"
   >
     <!-- Nav Bar -->
