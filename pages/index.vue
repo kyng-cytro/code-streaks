@@ -28,5 +28,6 @@
 </template>
 
 <script setup lang="ts">
+//TODO: check local storage before making API call
 const { data } = await useFetch("/api/quiz");
 </script>
