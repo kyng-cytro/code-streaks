@@ -2,5 +2,5 @@
   <Head>
     <Title>Code Streaks | Past</Title>
   </Head>
-  <div class="flex justify-center">Past</div>
+  <div class="flex h-screen justify-center">Past</div>
 </template>
