@@ -21,4 +21,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ["@heroicons/vue"],
   },
+  runtimeConfig: {
+    QUIZ_API_TOKEN: process.env.QUIZ_API_TOKEN,
+  },
 });

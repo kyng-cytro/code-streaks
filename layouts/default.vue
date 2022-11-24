@@ -34,7 +34,9 @@
       </Transition>
       <!-- Content -->
       <div class="md:col-span-5 lg:col-span-4">
-        <slot />
+        <div class="h-screen">
+          <slot />
+        </div>
         <Footer class="mb-5 mt-32 px-3" />
       </div>
     </div>

@@ -13,7 +13,7 @@
         class="cursor-pointer rounded-md border-2 border-slate-300 bg-slate-200 py-4 text-left hover:border-l-4 hover:border-l-teal-500 hover:bg-slate-300 focus:border-l-4 focus:border-l-teal-500 focus:bg-slate-300 focus:outline-none dark:border-slate-400 dark:bg-slate-500 dark:hover:border-l-teal-500 dark:hover:bg-slate-700 dark:focus:border-l-teal-500 dark:focus:bg-slate-700"
         v-for="(value, id, index) in question.answers"
         :class="{
-          hidden: value == null,
+          hidden: !value,
           'border-l-4 border-l-teal-500  bg-slate-400  dark:border-l-teal-500 dark:bg-slate-800':
             id.toString() == selected,
         }"
