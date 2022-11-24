@@ -42,7 +42,7 @@ import {
   ComputerDesktopIcon,
 } from "@heroicons/vue/24/outline";
 
-let isSystem = ref(true);
+const isSystem = ref(true);
 
 const emit = defineEmits(["toggle-dark", "toggle-nav"]);
 
