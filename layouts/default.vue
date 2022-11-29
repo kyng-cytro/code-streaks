@@ -1,6 +1,6 @@
 <template>
   <div
-    class="select-none bg-slate-100 font-mono dark:bg-slate-600 dark:text-slate-100"
+    class="flex min-h-screen select-none flex-col bg-slate-100 font-mono dark:bg-slate-600 dark:text-slate-100"
     :class="{ dark: isDark }"
   >
     <!-- Nav Bar -->
@@ -12,7 +12,7 @@
     />
     <!-- Side and Content -->
     <div
-      class="mt-8 grid grid-cols-1 px-3 md:grid-cols-7 md:px-8 lg:grid-cols-5"
+      class="mt-8 grid flex-1 grid-cols-1 px-3 md:grid-cols-7 md:px-8 lg:grid-cols-5"
     >
       <!-- Side Bar -->
       <SideBar class="hidden md:col-span-2 md:block lg:col-span-1" />
@@ -33,7 +33,7 @@
         />
       </Transition>
       <!-- Content -->
-      <div class="md:col-span-5 lg:col-span-4">
+      <div class="flex flex-col justify-between md:col-span-5 lg:col-span-4">
         <slot />
         <Footer class="mb-5 mt-32 px-3" />
       </div>
