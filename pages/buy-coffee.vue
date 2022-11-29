@@ -2,5 +2,5 @@
   <Head>
     <Title>Code Streaks | Pay for my coffee</Title>
   </Head>
-  <div class="flex h-screen justify-center">Coffee</div>
+  <div class="flex justify-center">Coffee</div>
 </template>
