@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="h-full">
     <Head>
       <Title>Code Streaks | Today</Title>
     </Head>
     <ClientOnly>
       <div v-if="today_streak">
         <div
-          class="mt-6 flex flex-col items-center justify-center space-y-10"
+          class="flex flex-col items-center justify-center space-y-10"
           v-if="today_streak.question"
         >
           <!-- Page Header -->
@@ -37,10 +37,14 @@
             v-if="!show_results"
           />
           <!-- Result UI-->
-          <ResultUI :passed="today_streak.passed" v-if="show_results" />
+          <ResultUI
+            :passed="today_streak.passed"
+            :streaks="streaks"
+            v-if="show_results"
+          />
         </div>
       </div>
-      <div class="flex h-screen items-center justify-center" v-else>
+      <div class="flex h-full items-center justify-center" v-else>
         <div role="status">
           <svg
             class="inline h-16 w-16 animate-spin fill-teal-500 text-gray-200 dark:text-gray-600"
@@ -81,17 +85,45 @@ const streaks = useLocalStorage<IStreak[]>("streaks", []);
 
 // Fetch from api and update local storage
 const fetchNStore = async () => {
-  console.log("Fetching");
+  if (process.server) {
+    console.log("Fetching from server");
+  }
+  if (!process.server) {
+    console.log("Fetching from client");
+  }
   const { data } = await useFetch("/api/quiz");
-  const streak: IStreak = {
-    date: today,
-    question: data.value as IShortQuestion,
-    completed: false,
-    passed: false,
-  };
-  streaks.value.push(streak);
-  today_streak.value = streak;
+  if (data.value != null) {
+    const streak: IStreak = {
+      date: today,
+      question: data.value as IShortQuestion,
+      completed: false,
+      passed: false,
+    };
+    streaks.value.push(streak);
+    today_streak.value = streak;
+  }
 };
+
+// Check local storage
+if (streaks.value != null) {
+  if (streaks.value.length < 1) {
+    fetchNStore();
+  } else {
+    const last_streak = streaks.value[streaks.value.length - 1];
+    if (last_streak.date !== today) {
+      fetchNStore();
+    } else {
+      today_streak.value = last_streak;
+    }
+  }
+}
+
+// Show results
+if (today_streak.value) {
+  if (today_streak.value.completed == true) {
+    show_results.value = true;
+  }
+}
 
 // Pass Quiz
 const passQuiz = () => {
@@ -114,23 +146,4 @@ const failQuiz = () => {
     show_results.value = true;
   }
 };
-
-// Check local storage
-if (streaks.value.length < 1) {
-  fetchNStore();
-} else {
-  const last_streak = streaks.value[streaks.value.length - 1];
-  if (last_streak.date !== today) {
-    fetchNStore();
-  } else {
-    today_streak.value = last_streak;
-  }
-}
-
-// Show results
-if (today_streak.value) {
-  if (today_streak.value.completed == true) {
-    show_results.value = true;
-  }
-}
 </script>
