@@ -47,4 +47,6 @@ import {
   CurrencyDollarIcon,
   XMarkIcon,
 } from "@heroicons/vue/24/outline";
+
+const emit = defineEmits(["toggle-nav"]);
 </script>

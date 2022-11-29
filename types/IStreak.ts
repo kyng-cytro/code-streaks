@@ -2,7 +2,7 @@ import { Answers } from "~~/types/IAnswers";
 import { Tag } from "~~/types/ITag";
 
 export interface IStreak {
-  date: Date;
+  date: string;
   question: IShortQuestion;
   completed: boolean;
   passed: boolean;
