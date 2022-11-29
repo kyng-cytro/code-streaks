@@ -52,6 +52,9 @@
   </div>
 </template>
 <script setup lang="ts">
+import { PropType } from "vue";
+import { IShortQuestion } from "~~/types/IStreak";
+
 const selected = ref("");
 
 const loading = ref(false);
@@ -62,8 +65,6 @@ const answerQuestion = () => {
   if (!selected.value) {
     return;
   }
-
-  console.log(selected.value);
 
   loading.value = true;
 
@@ -77,7 +78,7 @@ const answerQuestion = () => {
 };
 const { question } = defineProps({
   question: {
-    type: Object,
+    type: Object as PropType<IShortQuestion>,
     required: true,
   },
 });
