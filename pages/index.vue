@@ -29,17 +29,18 @@
               </div>
             </div>
           </div>
-          <!-- Quiz UI-->
+          <!-- Quiz UI -->
           <QuizUI
             :question="today_streak.question"
             @passed="passQuiz"
             @failed="failQuiz"
             v-if="!show_results"
           />
-          <!-- Result UI-->
+          <!-- Result UI -->
           <ResultUI
             :passed="today_streak.passed"
             :streaks="streaks"
+            :id="today_streak.id"
             v-if="show_results"
           />
         </div>
@@ -94,6 +95,7 @@ const fetchNStore = async () => {
   const { data } = await useFetch("/api/quiz");
   if (data.value != null) {
     const streak: IStreak = {
+      id: streaks.value.length,
       date: today,
       question: data.value as IShortQuestion,
       completed: false,

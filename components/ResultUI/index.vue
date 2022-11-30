@@ -1,5 +1,6 @@
 <template>
   <div class="flex w-full flex-col items-center space-y-8">
+    <!-- Passed UI -->
     <div class="flex flex-col items-center space-y-6 pt-3" v-if="passed">
       <NuxtImg class="h-52 w-52" src="/images/fire.png" />
       <div class="flex flex-col items-center space-y-5 text-sm sm:text-base">
@@ -13,6 +14,7 @@
         </div>
       </div>
     </div>
+    <!-- Failed UI -->
     <div class="flex flex-col items-center space-y-6 pt-3" v-else>
       <NuxtImg class="h-52 w-52" src="/images/cold.png" />
       <div class="flex flex-col items-center space-y-5 text-sm sm:text-base">
@@ -26,12 +28,20 @@
         </div>
       </div>
     </div>
-    <div>
+    <!-- Share & Review Buttons -->
+    <div class="flex space-x-4">
       <button
-        class="cursor-pointer rounded-md bg-teal-600 px-5 py-2.5 text-slate-100 transition-all hover:bg-teal-700 focus:bg-teal-700 focus:outline-none focus:ring-4 focus:ring-teal-300"
+        class="rounded-md bg-teal-500 px-5 py-2.5 text-slate-50 transition-all hover:bg-teal-700 focus:bg-teal-700 focus:outline-none focus:ring-4 focus:ring-teal-300"
+        @click="handleShare"
       >
-        <span>Share Result</span>
+        <span>Share</span>
       </button>
+      <NuxtLink
+        class="rounded-md border border-teal-400 px-5 py-2.5 transition-all hover:bg-teal-500 hover:text-slate-50 focus:bg-teal-700 focus:outline-none focus:ring-4 focus:ring-teal-300 dark:text-slate-100"
+        :to="`/review/${id}`"
+      >
+        <span>Review</span>
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -40,9 +50,13 @@
 import { PropType } from "vue";
 import { IStreak } from "~~/types/IStreak";
 
-const { passed, streaks } = defineProps({
+const { id, passed, streaks } = defineProps({
   passed: {
     type: Boolean,
+    required: true,
+  },
+  id: {
+    type: Number,
     required: true,
   },
   streaks: {
@@ -87,4 +101,8 @@ const longest_streak = computed(() => {
   });
   return longest > count ? longest : count;
 });
+
+const handleShare = () => {
+  console.log("Share");
+};
 </script>
