@@ -22,13 +22,12 @@
         <QuestionMarkCircleIcon class="h-5 w-5" />
         <p class="pt-[2.3px] text-sm">How to play?</p>
       </SideBarLink>
-      <SideBarLink
-        class="flex items-center space-x-2 py-3 px-3 transition-all duration-100 ease-in-out"
-        to="/buy-coffee"
-      >
-        <CurrencyDollarIcon class="h-5 w-5" />
-        <p class="pt-[2.3px] text-sm">Coffee</p>
-      </SideBarLink>
+      <NuxtLink target="_blank" to="https://www.buymeacoffee.com/cytro">
+        <NuxtImg
+          class="h-10 w-36 lg:h-14 lg:w-48"
+          src="/images/blue-button.png"
+        />
+      </NuxtLink>
     </div>
   </aside>
 </template>
@@ -38,6 +37,5 @@ import {
   PlayIcon,
   CalendarIcon,
   QuestionMarkCircleIcon,
-  CurrencyDollarIcon,
 } from "@heroicons/vue/24/outline";
 </script>
