@@ -71,5 +71,7 @@ const streak = ref<IStreak>();
 
 const streaks = useLocalStorage<IStreak[]>("streaks", []);
 
-streak.value = streaks.value.find((streak) => streak.id == Number(id));
+streak.value = streaks.value.find(
+  (streak) => streak.id == Number(id) && streak.completed == true
+);
 </script>
