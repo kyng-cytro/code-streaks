@@ -15,7 +15,8 @@
     "prettier-plugin-tailwindcss": "^0.1.13"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.0.12",
     "@vueuse/nuxt": "^9.5.0",
-    "@heroicons/vue": "^2.0.12"
+    "moment": "^2.29.4"
   }
 }

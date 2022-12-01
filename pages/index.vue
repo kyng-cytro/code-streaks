@@ -71,7 +71,7 @@
 
 <script setup lang="ts">
 import { IShortQuestion, IStreak } from "~~/types/IStreak";
-
+import moment from "moment";
 // Show or hide results
 const show_results = ref(false);
 
@@ -79,7 +79,7 @@ const show_results = ref(false);
 const today_streak = ref<IStreak>();
 
 // Date for today
-let today = new Date().toLocaleDateString();
+let today = moment().format("DD/MM/YYYY");
 
 // Fetch local storage
 const streaks = useLocalStorage<IStreak[]>("streaks", []);
