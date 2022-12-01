@@ -50,6 +50,8 @@
 import { PropType } from "vue";
 import { IStreak } from "~~/types/IStreak";
 
+import moment from "moment";
+
 const { id, passed, streaks } = defineProps({
   passed: {
     type: Boolean,
@@ -65,10 +67,27 @@ const { id, passed, streaks } = defineProps({
   },
 });
 
+const is_yesterday = (a: string, b: string) => {
+  const current = moment(a, "DD/MM/YYYY");
+  const previous = moment(b, "DD/MM/YYYY");
+
+  if (current.subtract(1, "day").isSame(previous)) {
+    return true;
+  }
+  return false;
+};
+
 const last_streak = computed(() => {
   let count = 0;
   for (let i = streaks.length - 2; i >= 0; i--) {
-    if (!streaks[i].passed) break;
+    if (!streaks[i].passed) {
+      break;
+    }
+    if (streaks[i - 1]) {
+      if (!is_yesterday(streaks[i].date, streaks[i - 1].date)) {
+        break;
+      }
+    }
     count++;
   }
   return count;
@@ -81,7 +100,14 @@ const total_played = computed(() => {
 const running_streak = computed(() => {
   let count = 0;
   for (let i = streaks.length - 1; i >= 0; i--) {
-    if (!streaks[i].passed) break;
+    if (!streaks[i].passed) {
+      break;
+    }
+    if (streaks[i - 1]) {
+      if (!is_yesterday(streaks[i].date, streaks[i - 1].date)) {
+        break;
+      }
+    }
     count++;
   }
   return count;
@@ -92,7 +118,15 @@ const longest_streak = computed(() => {
   let count = 0;
   streaks.forEach((streak) => {
     if (streak.passed) {
-      count++;
+      if (streaks[streaks.indexOf(streak) - 1]) {
+        if (
+          is_yesterday(streak.date, streaks[streaks.indexOf(streak) - 1].date)
+        ) {
+          count++;
+        }
+      } else {
+        count++;
+      }
     } else {
       if (count > longest) {
         longest = count;
