@@ -8,7 +8,7 @@
       <div
         class="scrollbar-hide flex max-h-[750px] max-w-xl flex-col space-y-2 overflow-y-auto overflow-x-hidden rounded-xl border-2 border-slate-400 bg-slate-300 py-10 px-6 dark:border-slate-400 dark:bg-slate-700"
       >
-        <h3><strong> Terms of service for Code Streaks</strong></h3>
+        <h3 class="font-semibold">Terms of service for Code Streaks</h3>
         <div>
           <p>
             These terms and conditions outline the rules and regulations for the
@@ -37,7 +37,7 @@
             referring to same.
           </p>
         </div>
-        <h3><strong>Cookies</strong></h3>
+        <h3 class="font-semibold">Cookies</h3>
         <div>
           <p>
             We employ the use of cookies. By accessing Code Streaks, you agreed
@@ -51,7 +51,7 @@
             also use cookies.
           </p>
         </div>
-        <h3><strong>License</strong></h3>
+        <h3 class="font-semibold">License</h3>
         <div>
           <p>
             Unless otherwise stated, Code Streaks and/or its licensors own the
@@ -118,7 +118,7 @@
             of your Comments in any and all forms, formats or media.
           </p>
         </div>
-        <h3><strong>Hyperlinking to our Content</strong></h3>
+        <h3 class="font-semibold">Hyperlinking to our Content</h3>
         <div>
           <p>
             The following organizations may link to our Website without prior
@@ -200,7 +200,7 @@
             linking absent a trademark license agreement.
           </p>
         </div>
-        <h3><strong>iFrames</strong></h3>
+        <h3 class="font-semibold">iFrames</h3>
         <div>
           <p>
             Without prior approval and written permission, you may not create
@@ -208,7 +208,7 @@
             presentation or appearance of our Website.
           </p>
         </div>
-        <h3><strong>Content Liability</strong></h3>
+        <h3 class="font-semibold">Content Liability</h3>
         <div>
           <p>
             We shall not be hold responsible for any content that appears on
@@ -219,11 +219,11 @@
             or other violation of, any third party rights.
           </p>
         </div>
-        <h3><strong>Your Privacy</strong></h3>
+        <h3 class="font-semibold">Your Privacy</h3>
         <div>
           <p>Please read Privacy Policy</p>
         </div>
-        <h3><strong>Reservation of Rights</strong></h3>
+        <h3 class="font-semibold">Reservation of Rights</h3>
         <div>
           <p>
             We reserve the right to request that you remove all links or any
@@ -234,7 +234,7 @@
             follow these linking terms and conditions.
           </p>
         </div>
-        <h3><strong>Removal of links from our website</strong></h3>
+        <h3 class="font-semibold">Removal of links from our website</h3>
         <div>
           <p>
             If you find any link on our Website that is offensive for any
@@ -249,7 +249,7 @@
             the website is kept up to date.
           </p>
         </div>
-        <h3><strong>Disclaimer</strong></h3>
+        <h3 class="font-semibold">Disclaimer</h3>
         <div>
           <p>
             To the maximum extent permitted by applicable law, we exclude all
