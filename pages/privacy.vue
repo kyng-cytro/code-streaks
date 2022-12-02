@@ -8,7 +8,7 @@
       <div
         class="scrollbar-hide flex max-h-[750px] max-w-xl flex-col space-y-2 overflow-y-auto overflow-x-hidden rounded-xl border-2 border-slate-400 bg-slate-300 py-10 px-6 dark:border-slate-400 dark:bg-slate-700"
       >
-        <h3><strong> Policy for Code Streaks</strong></h3>
+        <h3 class="font-semibold">Policy for Code Streaks</h3>
         <div>
           <p>
             At Code Streaks, accessible from https://codestreaks.com, one of our
@@ -21,7 +21,7 @@
             our Privacy Policy, do not hesitate to contact us.
           </p>
         </div>
-        <h3><strong>Log Files</strong></h3>
+        <h3 class="font-semibold">Log Files</h3>
         <div>
           <p>
             Code Streaks follows a standard procedure of using log files. These
@@ -36,7 +36,7 @@
             demographic information.
           </p>
         </div>
-        <h3><strong>Google DoubleClick DART Cookie</strong></h3>
+        <h3 class="font-semibold">Google DoubleClick DART Cookie</h3>
         <div>
           <p>
             Google is one of a third-party vendor on our site. It also uses
@@ -46,7 +46,7 @@
             cookies by visiting the Google ad and content network Privacy Policy
           </p>
         </div>
-        <h3><strong>Our Advertising Partners</strong></h3>
+        <h3 class="font-semibold">Our Advertising Partners</h3>
         <div>
           <p>
             Some of advertisers on our site may use cookies and web beacons. Our
@@ -55,7 +55,7 @@
             data.
           </p>
         </div>
-        <h3><strong> Policies</strong></h3>
+        <h3 class="font-semibold">Policies</h3>
         <div>
           <P
             >You may consult this list to find the Privacy Policy for each of
@@ -76,7 +76,7 @@
             cookies that are used by third-party advertisers.
           </p>
         </div>
-        <h3><strong>Third Party Privacy Policies</strong></h3>
+        <h3 class="font-semibold">Third Party Privacy Policies</h3>
         <div>
           <p>
             Code Streaks's Privacy Policy does not apply to other advertisers or
@@ -92,7 +92,7 @@
             respective websites.
           </p>
         </div>
-        <h3><strong>Children's Information</strong></h3>
+        <h3 class="font-semibold">Children's Information</h3>
         <div>
           <p>
             Another part of our priority is adding protection for children while
@@ -108,7 +108,7 @@
             best efforts to promptly remove such information from our records.
           </p>
         </div>
-        <h3><strong>Online Privacy Policy Only</strong></h3>
+        <h3 class="font-semibold">Online Privacy Policy Only</h3>
         <div>
           <p>
             This Privacy Policy applies only to our online activities and is
@@ -118,7 +118,7 @@
             other than this website.
           </p>
         </div>
-        <h3><strong>Consent</strong></h3>
+        <h3 class="font-semibold">Consent</h3>
         <div>
           <p>
             By using our website, you hereby consent to our Privacy Policy and
