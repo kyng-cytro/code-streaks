@@ -82,6 +82,7 @@ const today_streak = ref<IStreak>();
 let today = moment().format("DD/MM/YYYY");
 
 // Fetch local storage
+// TODO: prep for decryption
 const streaks = useLocalStorage<IStreak[]>("streaks", []);
 
 // Fetch from api and update local storage

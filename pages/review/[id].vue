@@ -33,12 +33,12 @@
             <!-- Question Review UI -->
             <QuizUIReview :question="streak.question" />
             <!-- Home Button-->
-            <NuxtLink
+            <button
               class="rounded-md border border-teal-400 px-5 py-1.5 transition-all hover:bg-teal-500 hover:text-slate-50 focus:bg-teal-700 focus:outline-none focus:ring-4 focus:ring-teal-300 dark:text-slate-100"
-              :to="`/`"
+              @click="goBack"
             >
-              <span>Back Home</span>
-            </NuxtLink>
+              <span>Go Back</span>
+            </button>
           </div>
         </div>
       </div>
@@ -51,12 +51,12 @@
           <h3 class="text-center text-3xl">404</h3>
           <p>Streak Not Found</p>
         </div>
-        <NuxtLink
+        <button
           class="rounded-md border border-teal-400 px-5 py-1.5 transition-all hover:bg-teal-500 hover:text-slate-50 focus:bg-teal-700 focus:outline-none focus:ring-4 focus:ring-teal-300 dark:text-slate-100"
-          :to="`/`"
+          @click="goBack"
         >
-          <span>Home</span>
-        </NuxtLink>
+          <span>Go Back</span>
+        </button>
       </div>
       <div class="flex justify-center"></div>
     </ClientOnly>
@@ -69,9 +69,14 @@ const { id } = useRoute().params;
 
 const streak = ref<IStreak>();
 
+// TODO: prep for decryption
 const streaks = useLocalStorage<IStreak[]>("streaks", []);
 
 streak.value = streaks.value.find(
   (streak) => streak.id == Number(id) && streak.completed == true
 );
+
+const goBack = () => {
+  useRouter().back();
+};
 </script>
