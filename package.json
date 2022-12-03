@@ -17,6 +17,7 @@
   "dependencies": {
     "@heroicons/vue": "^2.0.12",
     "@vueuse/nuxt": "^9.5.0",
-    "moment": "^2.29.4"
+    "moment": "^2.29.4",
+    "v-calendar": "^3.0.0-alpha.8"
   }
 }
