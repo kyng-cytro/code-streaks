@@ -77,6 +77,7 @@ const is_yesterday = (a: string, b: string) => {
   return false;
 };
 
+// FIXME: this is calculated incorrectly
 const last_streak = computed(() => {
   let count = 0;
   for (let i = streaks.length - 2; i >= 0; i--) {
@@ -97,12 +98,23 @@ const total_played = computed(() => {
   return streaks.filter((streak) => streak.completed === true).length;
 });
 
+// FIXME: this is not the right way to calculate
 const running_streak = computed(() => {
   let count = 0;
+
+  if (
+    streaks[0] &&
+    is_yesterday(streaks[0].date, moment().format("DD/MM/YYYY")) &&
+    streaks[0].passed
+  ) {
+    count = 1;
+  }
+
   for (let i = streaks.length - 1; i >= 0; i--) {
     if (!streaks[i].passed) {
       break;
     }
+    // FIXME: this is calculated wrongly
     if (streaks[i - 1]) {
       if (!is_yesterday(streaks[i].date, streaks[i - 1].date)) {
         break;
@@ -113,9 +125,11 @@ const running_streak = computed(() => {
   return count;
 });
 
+// FIXME: this is calculated incorrectly
 const longest_streak = computed(() => {
   let longest = 0;
   let count = 0;
+
   streaks.forEach((streak) => {
     if (streak.passed) {
       if (streaks[streaks.indexOf(streak) - 1]) {
@@ -136,7 +150,5 @@ const longest_streak = computed(() => {
   return longest > count ? longest : count;
 });
 
-const handleShare = () => {
-  console.log("Share");
-};
+const handleShare = () => {};
 </script>
