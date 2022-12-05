@@ -49,7 +49,6 @@
 <script setup lang="ts">
 import { PropType } from "vue";
 import { IStreak } from "~~/types/IStreak";
-
 import moment from "moment";
 
 const { id, passed, streaks } = defineProps({
