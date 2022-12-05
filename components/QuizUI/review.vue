@@ -15,7 +15,8 @@
         :class="{
           hidden: !value,
           'border-l-4 border-l-teal-500  bg-slate-400  dark:border-l-teal-500 dark:bg-slate-800':
-            `${id.toString()}_correct` == question.correct_answer,
+            `${id.toString()}_correct` ==
+            decrypt(question.correct_answer, useRuntimeConfig().public.aesKey),
         }"
         :key="index"
       >
@@ -28,6 +29,13 @@
 <script setup lang="ts">
 import { PropType } from "vue";
 import { IShortQuestion } from "~~/types/IStreak";
+import CryptoAES from "crypto-js/aes";
+import CryptoENC from "crypto-js/enc-utf8";
+
+const decrypt = (data: string, key: string) => {
+  var decrypted = CryptoAES.decrypt(data, key);
+  return decrypted.toString(CryptoENC);
+};
 
 const { question } = defineProps({
   question: {

@@ -72,6 +72,7 @@
 <script setup lang="ts">
 import { IShortQuestion, IStreak } from "~~/types/IStreak";
 import moment from "moment";
+import CryptoAES from "crypto-js/aes";
 
 // Show or hide results
 const show_results = ref(false);
@@ -85,6 +86,11 @@ let today = moment().format("DD/MM/YYYY");
 // Fetch local storage
 const streaks = useLocalStorage<IStreak[]>("streaks", []);
 
+const encrypt = (data: string, key: string) => {
+  var encrypted = CryptoAES.encrypt(data, key);
+  return encrypted.toString();
+};
+
 // Fetch from api and update local storage
 const fetchNStore = async () => {
   if (process.server) {
@@ -95,10 +101,21 @@ const fetchNStore = async () => {
   }
   const { data } = await useFetch("/api/quiz");
   if (data.value != null) {
+    // TODO: hard coded key here
+    let encrypted_answer;
+    if (!process.server) {
+      encrypted_answer = encrypt(
+        data.value.correct_answer,
+        useRuntimeConfig().public.aesKey
+      );
+    }
     const streak: IStreak = {
       id: streaks.value.length,
       date: today,
-      question: data.value as IShortQuestion,
+      question: {
+        ...data.value,
+        correct_answer: encrypted_answer ?? data.value.correct_answer,
+      } as IShortQuestion,
       completed: false,
       passed: false,
     };
