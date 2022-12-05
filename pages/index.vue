@@ -72,6 +72,7 @@
 <script setup lang="ts">
 import { IShortQuestion, IStreak } from "~~/types/IStreak";
 import moment from "moment";
+
 // Show or hide results
 const show_results = ref(false);
 
@@ -82,7 +83,6 @@ const today_streak = ref<IStreak>();
 let today = moment().format("DD/MM/YYYY");
 
 // Fetch local storage
-// TODO: prep for decryption
 const streaks = useLocalStorage<IStreak[]>("streaks", []);
 
 // Fetch from api and update local storage

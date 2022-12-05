@@ -70,83 +70,78 @@ const { id, passed, streaks } = defineProps({
 const is_yesterday = (a: string, b: string) => {
   const current = moment(a, "DD/MM/YYYY");
   const previous = moment(b, "DD/MM/YYYY");
-
   if (current.subtract(1, "day").isSame(previous)) {
     return true;
   }
   return false;
 };
 
-// FIXME: this is calculated incorrectly
-const last_streak = computed(() => {
-  let count = 0;
-  for (let i = streaks.length - 2; i >= 0; i--) {
-    if (!streaks[i].passed) {
-      break;
-    }
-    if (streaks[i - 1]) {
-      if (!is_yesterday(streaks[i].date, streaks[i - 1].date)) {
-        break;
-      }
-    }
-    count++;
-  }
-  return count;
-});
-
 const total_played = computed(() => {
   return streaks.filter((streak) => streak.completed === true).length;
 });
 
-// FIXME: this is not the right way to calculate
-const running_streak = computed(() => {
+const last_streak = computed(() => {
   let count = 0;
 
-  if (
-    streaks[0] &&
-    is_yesterday(streaks[0].date, moment().format("DD/MM/YYYY")) &&
-    streaks[0].passed
-  ) {
-    count = 1;
-  }
-
-  for (let i = streaks.length - 1; i >= 0; i--) {
-    if (!streaks[i].passed) {
+  // starting from -2 cause we don't want to count today's fail
+  for (let i = streaks.length - 2; i >= 0; i--) {
+    if (
+      streaks[i].passed &&
+      is_yesterday(streaks[i + 1].date, streaks[i].date)
+    ) {
+      count++;
+    } else {
       break;
     }
-    // FIXME: this is calculated wrongly
-    if (streaks[i - 1]) {
-      if (!is_yesterday(streaks[i].date, streaks[i - 1].date)) {
-        break;
-      }
-    }
-    count++;
   }
   return count;
 });
 
-// FIXME: this is calculated incorrectly
+const running_streak = computed(() => {
+  // Using 1 here cause we know they have at least 1 already
+  let count = 1;
+
+  // starting from -2 cause we already counted today's win in above line
+  for (let i = streaks.length - 2; i >= 0; i--) {
+    if (
+      streaks[i].passed &&
+      is_yesterday(streaks[i + 1].date, streaks[i].date)
+    ) {
+      count++;
+    } else {
+      break;
+    }
+  }
+  return count;
+});
+
 const longest_streak = computed(() => {
   let longest = 0;
   let count = 0;
 
-  streaks.forEach((streak) => {
-    if (streak.passed) {
-      if (streaks[streaks.indexOf(streak) - 1]) {
-        if (
-          is_yesterday(streak.date, streaks[streaks.indexOf(streak) - 1].date)
-        ) {
-          count++;
-        }
-      } else {
+  // looping forward cause we are spanning the entire array
+  for (let i = 0; i < streaks.length; i++) {
+    if (i == 0) {
+      if (streaks[i].passed) {
         count++;
       }
     } else {
-      if (count > longest) {
-        longest = count;
+      if (
+        streaks[i].passed &&
+        is_yesterday(streaks[i].date, streaks[i - 1].date)
+      ) {
+        count++;
+      } else {
+        if (count > longest) {
+          longest = count;
+          count = 0;
+        } else {
+          count = 0;
+        }
       }
     }
-  });
+  }
+
   return longest > count ? longest : count;
 });
 

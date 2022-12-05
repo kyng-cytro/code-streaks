@@ -46,7 +46,6 @@ const dark = useDark();
 
 const attributes = ref<Attribute[]>([]);
 
-// TODO: prep for decryption
 const streaks = useLocalStorage<IStreak[]>("streaks", []);
 
 streaks.value.forEach((streak) => {
