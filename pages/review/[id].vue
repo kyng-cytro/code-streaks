@@ -69,7 +69,6 @@ const { id } = useRoute().params;
 
 const streak = ref<IStreak>();
 
-// TODO: prep for decryption
 const streaks = useLocalStorage<IStreak[]>("streaks", []);
 
 streak.value = streaks.value.find(
