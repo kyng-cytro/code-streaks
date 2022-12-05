@@ -54,12 +54,19 @@
 <script setup lang="ts">
 import { PropType } from "vue";
 import { IShortQuestion } from "~~/types/IStreak";
+import CryptoAES from "crypto-js/aes";
+import CryptoENC from "crypto-js/enc-utf8";
 
 const selected = ref("");
 
 const loading = ref(false);
 
 const emit = defineEmits(["passed", "failed"]);
+
+const decrypt = (data: string, key: string) => {
+  var decrypted = CryptoAES.decrypt(data, key);
+  return decrypted.toString(CryptoENC);
+};
 
 const answerQuestion = () => {
   if (!selected.value) {
@@ -68,7 +75,11 @@ const answerQuestion = () => {
 
   loading.value = true;
 
-  const correct_answer = question.correct_answer;
+  // TODO: hard coded key here
+  const correct_answer = decrypt(
+    question.correct_answer,
+    useRuntimeConfig().public.aesKey
+  );
 
   if (correct_answer == selected.value) {
     emit("passed");

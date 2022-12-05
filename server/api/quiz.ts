@@ -9,10 +9,10 @@ function objForEach<T>(obj: T, f: (k: keyof T, v: T[keyof T]) => void): void {
 }
 
 export default defineEventHandler(async () => {
-  const { QUIZ_API_TOKEN } = useRuntimeConfig();
+  const { quizApiToken } = useRuntimeConfig();
 
   const data: IQuestion[] = await $fetch(
-    `https://quizapi.io/api/v1/questions?apiKey=${QUIZ_API_TOKEN}&limit=1&difficulty=hard`
+    `https://quizapi.io/api/v1/questions?apiKey=${quizApiToken}&limit=1&difficulty=hard`
   );
 
   objForEach(data[0].correct_answers, (k, v) => {
