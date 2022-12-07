@@ -20,6 +20,7 @@
     "@vueuse/nuxt": "^9.5.0",
     "crypto-js": "^4.1.1",
     "moment": "^2.29.4",
-    "v-calendar": "^3.0.0-alpha.8"
+    "v-calendar": "^3.0.0-alpha.8",
+    "vue-social-sharing": "^4.0.0-alpha4"
   }
 }

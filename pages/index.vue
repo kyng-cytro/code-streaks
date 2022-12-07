@@ -4,6 +4,7 @@
       <Title>Code Streaks | Today</Title>
     </Head>
     <ClientOnly>
+      <!-- Home page -->
       <div v-if="today_streak">
         <div
           class="flex flex-col items-center justify-center space-y-10"
@@ -45,6 +46,7 @@
           />
         </div>
       </div>
+      <!-- Loading animations -->
       <div class="flex h-full items-center justify-center" v-else>
         <div role="status">
           <svg

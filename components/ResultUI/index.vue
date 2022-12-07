@@ -1,4 +1,8 @@
 <template>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+  />
   <div class="flex w-full flex-col items-center space-y-8">
     <!-- Passed UI -->
     <div class="flex flex-col items-center space-y-6 pt-3" v-if="passed">
@@ -29,22 +33,74 @@
       </div>
     </div>
     <!-- Share & Review Buttons -->
-    <div class="flex space-x-4">
-      <button
-        class="rounded-md bg-teal-500 px-5 py-2.5 text-slate-50 transition-all hover:bg-teal-700 focus:bg-teal-700 focus:outline-none focus:ring-4 focus:ring-teal-300"
-        @click="handleShare"
-      >
-        <span>Share</span>
-      </button>
-      <NuxtLink
-        class="rounded-md border border-teal-400 px-5 py-2.5 transition-all hover:bg-teal-500 hover:text-slate-50 focus:bg-teal-700 focus:outline-none focus:ring-4 focus:ring-teal-300 dark:text-slate-100"
-        :to="`/review/${id}`"
-      >
-        <span>Review</span>
-      </NuxtLink>
+    <div class="space-y-4 transition-all duration-500 ease-in-out">
+      <div class="flex space-x-4">
+        <div
+          tabindex="0"
+          class="mx-auto flex w-32 items-center justify-between rounded-md bg-teal-400 px-3 text-slate-100 shadow-md shadow-slate-700 transition-all duration-500 ease-in-out hover:w-36 hover:shadow-lg hover:shadow-slate-700 focus:w-36 focus:shadow-lg focus:shadow-slate-700 focus:outline-none focus:ring-2 focus:ring-teal-300 dark:text-slate-700 dark:shadow-slate-900 hover:dark:shadow-slate-900 focus:dark:shadow-slate-900"
+        >
+          <ShareNetwork
+            class="hover:text-slate-400 focus:text-slate-400 focus:outline-none"
+            network="twitter"
+            url="https://code-streaks.com"
+            :title="message"
+            hashtags="coding,streak"
+          >
+            <i class="fab fah fa-lg fa-twitter"></i>
+          </ShareNetwork>
+          <ShareNetwork
+            class="hover:text-slate-400 focus:text-slate-400 focus:outline-none"
+            network="whatsapp"
+            url="https://code-streaks.com"
+            :title="message"
+          >
+            <i class="fab fah fa-lg fa-whatsapp"></i>
+          </ShareNetwork>
+
+          <ShareNetwork
+            class="hover:text-slate-400 focus:text-slate-400 focus:outline-none"
+            network="telegram"
+            url="https://code-streaks.com"
+            :title="message"
+          >
+            <i class="fab fah fa-lg fa-telegram"></i>
+          </ShareNetwork>
+        </div>
+        <NuxtLink
+          class="rounded-md border border-teal-400 px-5 py-2.5 transition-all duration-500 ease-in-out hover:bg-teal-500 hover:text-slate-50 focus:bg-teal-700 focus:outline-none focus:ring-4 focus:ring-teal-300 dark:text-slate-100"
+          :to="`/review/${id}`"
+        >
+          <span>Review</span>
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.share-enter-active {
+  animation: shutter-in-bottom 0.8s ease 0s 1 normal none;
+}
+.share-leave-active {
+  transition: opacity 0.5s;
+}
+.share-leave-to {
+  opacity: 0;
+}
+
+@keyframes shutter-in-bottom {
+  0% {
+    transform: rotateX(100deg);
+    transform-origin: bottom;
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0);
+    transform-origin: bottom;
+    opacity: 1;
+  }
+}
+</style>
 
 <script setup lang="ts">
 import { PropType } from "vue";
@@ -144,5 +200,7 @@ const longest_streak = computed(() => {
   return longest > count ? longest : count;
 });
 
-const handleShare = () => {};
+const message = passed
+  ? `Just hit a new personal record on code-streaks.com with a streak of ${running_streak.value} days! Keep pushing.`
+  : `Just had a setback and broke my streak on code-streaks.com, but I'm not giving up! Time to start a new streak`;
 </script>
