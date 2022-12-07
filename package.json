@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.12",
+    "@vercel/analytics": "^0.1.5",
     "@vueuse/nuxt": "^9.5.0",
     "crypto-js": "^4.1.1",
     "moment": "^2.29.4",
