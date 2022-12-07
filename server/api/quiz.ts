@@ -12,7 +12,7 @@ export default defineEventHandler(async () => {
   const { quizApiToken } = useRuntimeConfig();
 
   const data: IQuestion[] = await $fetch(
-    `https://quizapi.io/api/v1/questions?apiKey=${quizApiToken}&limit=1&difficulty=hard`
+    `https://quizapi.io/api/v1/questions?apiKey=${quizApiToken}&limit=1`
   );
 
   objForEach(data[0].correct_answers, (k, v) => {
