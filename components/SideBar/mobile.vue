@@ -42,5 +42,5 @@ import {
   XMarkIcon,
 } from "@heroicons/vue/24/outline";
 
-const emit = defineEmits(["toggle-nav"]);
+defineEmits(["toggle-nav"]);
 </script>
