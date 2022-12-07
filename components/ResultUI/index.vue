@@ -42,7 +42,7 @@
           <ShareNetwork
             class="hover:text-slate-400 focus:text-slate-400 focus:outline-none"
             network="twitter"
-            url="https://code-streaks.com"
+            url="https://code-streaks.vercel.app/"
             :title="message"
             hashtags="coding,streak"
           >
@@ -51,7 +51,7 @@
           <ShareNetwork
             class="hover:text-slate-400 focus:text-slate-400 focus:outline-none"
             network="whatsapp"
-            url="https://code-streaks.com"
+            url="https://code-streaks.vercel.app/"
             :title="message"
           >
             <i class="fab fah fa-lg fa-whatsapp"></i>
@@ -60,7 +60,7 @@
           <ShareNetwork
             class="hover:text-slate-400 focus:text-slate-400 focus:outline-none"
             network="telegram"
-            url="https://code-streaks.com"
+            url="https://code-streaks.vercel.app/"
             :title="message"
           >
             <i class="fab fah fa-lg fa-telegram"></i>
@@ -201,6 +201,6 @@ const longest_streak = computed(() => {
 });
 
 const message = passed
-  ? `Just hit a new personal record on code-streaks.com with a streak of ${running_streak.value} days! Keep pushing.`
-  : `Just had a setback and broke my streak on code-streaks.com, but I'm not giving up! Time to start a new streak`;
+  ? `Just hit a new personal record with a streak of ${running_streak.value} days! Keep pushing.`
+  : `Just had a setback and broke my ${last_streak.value} days! long streak, but I'm not giving up! Time to start a new streak`;
 </script>
