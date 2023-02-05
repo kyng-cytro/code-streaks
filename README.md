@@ -1,42 +1,55 @@
-# Nuxt 3 Minimal Starter
+# Code-Streaks 💻🔥
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## About 🧐
 
-## Setup
+Code-Streaks is a daily quiz platform designed to help developers stay sharp and on their toes 💪. Built with Nuxt, Vue, and TypeScript 🚀, this platform offers a fun and interactive way to keep your coding skills in top form 💯.
 
-Make sure to install the dependencies:
+## Features 🎉
+
+- Daily quizzes on various programming topics 🤓
+- Leaderboard to compete with other developers 🏆
+- Personalized progress tracking 📈
+- User-friendly interface 🙌
+
+## Requirements 📋
+
+- Node.js 💻
+- NPM 📦
+
+## Installation 💾
+
+To get started with Code-Streaks, follow these steps:
+
+1. Clone the repository to your local machine.
 
 ```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
+git clone https://github.com/kyng-cytro/code-streaks.git
 ```
 
-## Development Server
+2. Navigate to the project directory.
 
-Start the development server on http://localhost:3000
+```bash
+cd code-streaks
+```
+
+3. Install the required dependencies.
+
+```bash
+npm install
+```
+
+4. Start the development server.
 
 ```bash
 npm run dev
 ```
 
-## Production
+5. Access the platform at `http://localhost:3000`. 💻
 
-Build the application for production:
+## Contributing 🤝
 
-```bash
-npm run build
-```
+Contributions to Code-Streaks are welcome 🙌. If you would like to contribute, please fork the repository and submit a pull request 🔃.
 
-Locally preview production build:
+## License 📜
 
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Code-Streaks is released under the MIT License 🎉.
