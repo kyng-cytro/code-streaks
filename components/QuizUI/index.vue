@@ -75,7 +75,6 @@ const answerQuestion = () => {
 
   loading.value = true;
 
-  // TODO: hard coded key here
   const correct_answer = decrypt(
     question.correct_answer,
     useRuntimeConfig().public.aesKey

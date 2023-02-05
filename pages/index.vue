@@ -103,7 +103,6 @@ const fetchNStore = async () => {
   }
   const { data } = await useFetch("/api/quiz");
   if (data.value != null) {
-    // TODO: hard coded key here
     let encrypted_answer;
     if (!process.server) {
       encrypted_answer = encrypt(
