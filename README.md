@@ -11,6 +11,18 @@ Code-Streaks is a daily quiz platform designed to help developers stay sharp and
 - Personalized progress tracking 📈
 - User-friendly interface 🙌
 
+## 📸 Screenshots
+
+![Quiz](https://imgur.com/VdzJhbr.png "Quiz")
+
+![Calendar](https://imgur.com/D1uum4K.png "Calendar")
+
+![How to Play](https://imgur.com/SyCO4II.png "HowToPlay")
+
+![Holding Streak](https://imgur.com/94RZMNz.png "Holding Streak")
+
+![Broken Streak](https://imgur.com/m3TV5pX.png "Broken Streak")
+
 ## Requirements 📋
 
 - Node.js 💻
