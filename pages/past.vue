@@ -12,7 +12,6 @@
           :attributes="attributes"
           :is-dark="dark"
           is-expanded
-          :popover="{ placement: 'auto' }"
         />
       </ClientOnly>
     </div>
