@@ -95,16 +95,16 @@ const encrypt = (data: string, key: string) => {
 
 // Fetch from api and update local storage
 const fetchNStore = async () => {
-  if (process.server) {
+  if (import.meta.server) {
     console.log("Fetching from server");
   }
-  if (!process.server) {
+  if (!import.meta.server) {
     console.log("Fetching from client");
   }
   const { data } = await useFetch("/api/quiz");
   if (data.value != null) {
     let encrypted_answer;
-    if (!process.server) {
+    if (!import.meta.server) {
       encrypted_answer = encrypt(
         data.value.correct_answer,
         useRuntimeConfig().public.aesKey,
