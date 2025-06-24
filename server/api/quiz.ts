@@ -1,4 +1,4 @@
-import { IQuestion } from "~/types/IQuestion";
+import type { IQuestion } from "@/types/IQuestion";
 
 function objForEach<T>(obj: T, f: (k: keyof T, v: T[keyof T]) => void): void {
   for (let k in obj) {
@@ -12,7 +12,7 @@ export default defineEventHandler(async () => {
   const { quizApiToken } = useRuntimeConfig();
 
   const data: IQuestion[] = await $fetch(
-    `https://quizapi.io/api/v1/questions?apiKey=${quizApiToken}&limit=1`
+    `https://quizapi.io/api/v1/questions?apiKey=${quizApiToken}&limit=1`,
   );
 
   objForEach(data[0].correct_answers, (k, v) => {

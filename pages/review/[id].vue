@@ -63,7 +63,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { IStreak } from "~~/types/IStreak";
+import type { IStreak } from "@/types/IStreak";
 
 const { id } = useRoute().params;
 
@@ -72,7 +72,7 @@ const streak = ref<IStreak>();
 const streaks = useLocalStorage<IStreak[]>("streaks", []);
 
 streak.value = streaks.value.find(
-  (streak) => streak.id == Number(id) && streak.completed == true
+  (streak) => streak.id == Number(id) && streak.completed == true,
 );
 
 const goBack = () => {

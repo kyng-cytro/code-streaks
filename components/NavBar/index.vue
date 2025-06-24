@@ -10,52 +10,39 @@
       <NuxtLink to="/" class="pt-[3.2px] text-xl">Code Streaks</NuxtLink>
     </div>
     <div class="px-3 md:px-6">
-      <Transition name="menu" mode="out-in">
-        <ComputerDesktopIcon
-          class="h-6 w-6 cursor-pointer"
-          @click="toggleSystem"
-          key="ci"
-          v-if="isSystem"
-        />
-        <SunIcon
-          key="si"
-          class="h-6 w-6 cursor-pointer"
-          v-else-if="dark"
-          @click="$emit('toggle-dark')"
-        />
-        <MoonIcon
-          key="mi"
-          class="h-6 w-6 cursor-pointer"
-          @click="$emit('toggle-dark')"
-          v-else
-        />
-      </Transition>
+      <ClientOnly>
+        <Transition name="menu" mode="out-in">
+          <SunIcon
+            key="si"
+            class="size-6 cursor-pointer"
+            v-if="mode == 'dark'"
+            @click="$colorMode.preference = 'light'"
+          />
+          <MoonIcon
+            key="mi"
+            class="size-6 cursor-pointer"
+            @click="$colorMode.preference = 'dark'"
+            v-else
+          />
+        </Transition>
+        <template #fallback>
+          <div class="size-6 bg-slate-300 dark:bg-slate-700 rounded-md" />
+        </template>
+      </ClientOnly>
     </div>
   </nav>
 </template>
 
 <script setup lang="ts">
-import {
-  Bars3Icon,
-  MoonIcon,
-  SunIcon,
-  ComputerDesktopIcon,
-} from "@heroicons/vue/24/outline";
+import { Bars3Icon, MoonIcon, SunIcon } from "@heroicons/vue/24/outline";
 
-const isSystem = ref(true);
+const emit = defineEmits(["toggle-nav"]);
 
-const emit = defineEmits(["toggle-dark", "toggle-nav"]);
+const mode = computed(() => {
+  return useColorMode().value;
+});
 
-const toggleSystem = () => {
-  isSystem.value = false;
-  emit("toggle-dark");
-};
-
-const { dark, nav } = defineProps({
-  dark: {
-    type: Boolean,
-    required: true,
-  },
+defineProps({
   nav: {
     type: Boolean,
     required: true,

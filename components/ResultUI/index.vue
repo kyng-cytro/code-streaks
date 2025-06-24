@@ -103,8 +103,8 @@
 </style>
 
 <script setup lang="ts">
-import { PropType } from "vue";
-import { IStreak } from "~~/types/IStreak";
+import type { PropType } from "vue";
+import type { IStreak } from "@/types/IStreak";
 import moment from "moment";
 
 const { id, passed, streaks } = defineProps({

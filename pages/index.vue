@@ -72,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import { IShortQuestion, IStreak } from "~~/types/IStreak";
+import type { IShortQuestion, IStreak } from "@/types/IStreak";
 import moment from "moment";
 import CryptoAES from "crypto-js/aes";
 
@@ -107,7 +107,7 @@ const fetchNStore = async () => {
     if (!process.server) {
       encrypted_answer = encrypt(
         data.value.correct_answer,
-        useRuntimeConfig().public.aesKey
+        useRuntimeConfig().public.aesKey,
       );
     }
     const streak: IStreak = {

@@ -52,8 +52,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { PropType } from "vue";
-import { IShortQuestion } from "~~/types/IStreak";
+import type { PropType } from "vue";
+import type { IShortQuestion } from "@/types/IStreak";
 import CryptoAES from "crypto-js/aes";
 import CryptoENC from "crypto-js/enc-utf8";
 
@@ -77,7 +77,7 @@ const answerQuestion = () => {
 
   const correct_answer = decrypt(
     question.correct_answer,
-    useRuntimeConfig().public.aesKey
+    useRuntimeConfig().public.aesKey,
   );
 
   if (correct_answer == selected.value) {

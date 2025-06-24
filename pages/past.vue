@@ -10,9 +10,14 @@
         <Calendar
           @dayclick="handleClick"
           :attributes="attributes"
-          :is-dark="dark"
-          is-expanded
+          is-dark="{ selector: ':root', darkClass: 'dark' }"
+          expanded
         />
+        <template #fallback>
+          <div
+            class="w-full bg-slate-300 dark:bg-slate-700 rounded-md h-[270px]"
+          />
+        </template>
       </ClientOnly>
     </div>
     <div
@@ -28,10 +33,10 @@
 </template>
 
 <script setup lang="ts">
-import "v-calendar/dist/style.css";
+import type { DayClick } from "@/types/IDayClick";
+import type { IStreak } from "@/types/IStreak";
 import moment from "moment";
-import { IStreak } from "~~/types/IStreak";
-import { DayClick } from "~~/types/IDayClick";
+import "v-calendar/dist/style.css";
 
 interface Attribute {
   highlight: {
@@ -40,8 +45,6 @@ interface Attribute {
   };
   dates: Date;
 }
-
-const dark = useDark();
 
 const attributes = ref<Attribute[]>([]);
 
@@ -59,15 +62,14 @@ streaks.value.forEach((streak) => {
   }
 });
 
-const handleClick = (e: DayClick) => {
-  if (e.attributes.length < 1) {
+const handleClick = (day: DayClick, e: Event) => {
+  if (day.attributes.length < 1) {
     return;
   }
-  navigateTo(
-    "/review/" +
-      streaks.value.find(
-        (streak) => streak.date == moment(e.id).format("DD/MM/YYYY")
-      )?.id
-  );
+  const id = streaks.value.find(
+    (streak) => streak.date === moment(day.id).format("DD/MM/YYYY"),
+  )?.id;
+  (e.target as HTMLElement).blur();
+  navigateTo("/review/" + id);
 };
 </script>
